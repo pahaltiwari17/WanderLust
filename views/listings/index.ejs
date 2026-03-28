@@ -1,0 +1,191 @@
+<% layout("/layouts/boilerplate") %>
+
+
+    <style>
+        #filters {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter {
+            text-align: center;
+            margin-right: 2rem;
+            margin-top: 2rem;
+            opacity: 0.7;
+            text-decoration: none;
+            color: #000000;
+        }
+
+        .filter:hover {
+            opacity: 1;
+            cursor: pointer;
+        }
+
+        .filter p {
+            font-size: 0.8rem;
+        }
+
+        .tax-info {
+            display: none;
+        }
+
+        .tax-toggle {
+            opacity: 100;
+            margin-left: 6px;
+            color: #000000;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .price {
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+    </style>
+    <div class="tabs-container">
+        <div class="tabs-wrapper">
+
+            <a href="/plans" class="tab-item">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <span>Plans</span>
+            </a>
+
+            <a href="/services" class="tab-item">
+                <i class="fa-solid fa-bell-concierge"></i>
+                <span>Services</span>
+            </a>
+
+        </div>
+    </div>
+
+    <div id="filters">
+        <a href="/listings?category=Trending" class="filter">
+            <div><i class="fa-solid fa-fire"></i></div>
+            <p>Trending</p>
+        </a>
+
+        <a href="/listings?category=Rooms" class="filter">
+            <div><i class="fa-solid fa-bed"></i></div>
+            <p>Rooms</p>
+        </a>
+
+        <a href="/listings?category=Iconic" class="filter">
+            <div><i class="fa-solid fa-city"></i></div>
+            <p>Iconic</p>
+        </a>
+
+        <a href="/listings?category=Mountains" class="filter">
+            <div><i class="fa-solid fa-mountain"></i></div>
+            <p>Mountains</p>
+        </a>
+
+        <a href="/listings?category=Castles" class="filter">
+            <div><i class="fa-solid fa-fort-awesome"></i></div>
+            <p>Castles</p>
+        </a>
+
+        <a href="/listings?category=Amazing Pools" class="filter">
+            <div><i class="fa-solid fa-person-swimming"></i></div>
+            <p>Amazing Pools</p>
+        </a>
+
+        <a href="/listings?category=Camping" class="filter">
+            <div><i class="fa-solid fa-campground"></i></div>
+            <p>Camping</p>
+        </a>
+
+        <a href="/listings?category=Historic" class="filter">
+            <div><i class="fa-solid fa-landmark"></i></div>
+            <p>Historic</p>
+        </a>
+
+        <a href="/listings?category=Arctic" class="filter">
+            <div><i class="fa-regular fa-snowflake"></i></div>
+            <p>Arctic</p>
+        </a>
+
+        <div class="tax-toggle">
+            <div class="form-check-reverse form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault" />
+                <label class="form-check-label" for="switchCheckDefault">Display total after taxes</label>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+        <% for(let listing of allListings) { %>
+            <a href="/listings/<%= listing._id %>" class="listing-link">
+                <div class="card col listing-card">
+                    <img src="<%= listing.image.url %>" class="card-img-top" alt="listing-image"
+                        style="height: 20rem;" />
+                    <div class="card-img-overlay"></div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            <b>
+                                <%= listing.title %>
+                            </b> <br />
+                            <span class="price" data-price="<%= listing.price %>">
+                                &#8377; <%= listing.price.toLocaleString("en-IN") %>
+                            </span> / night
+                            <span class="tax-info"> (incl. GST)</span>
+                        </p>
+                    </div>
+                </div>
+            </a>
+            <% } %>
+    </div>
+
+    <div id="welcomeModal" class="custom-modal">
+        <div class="modal-content-box">
+
+            <button onclick="closeModal()" class="close-btn">x</button>
+
+            <h4>Best Picks For You</h4>
+
+            <div class="modal-cards">
+
+                <div class="mini-card" onclick="window.location='/plans'">
+                    <h6>Goa Budget Escape</h6>
+                    <p>₹15000 • Beach vibes</p>
+                </div>
+
+                <div class="mini-card" onclick="window.location='/plans'">
+                    <h6>Manali Adventure</h6>
+                    <p>₹26000 • Mountains</p>
+                </div>
+
+                <div class="mini-card" onclick="window.location='/services'">
+                    <h6>Travel Guide</h6>
+                    <p>Expert help</p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        let taxSwitch = document.getElementById("switchCheckDefault");
+
+        taxSwitch.addEventListener("change", () => {
+            let prices = document.querySelectorAll(".price");
+            let taxInfo = document.querySelectorAll(".tax-info");
+
+            prices.forEach((priceEl, index) => {
+                let basePrice = parseFloat(priceEl.getAttribute("data-price"));
+
+                if (taxSwitch.checked) {
+                    let total = Math.round(basePrice * 1.18);
+                    priceEl.innerText = "₹" + total.toLocaleString("en-IN");
+                    taxInfo[index].style.opacity = "1";
+                } else {
+                    priceEl.innerText = "₹" + basePrice.toLocaleString("en-IN");
+                    taxInfo[index].style.opacity = "0";
+                }
+            });
+        });
+    </script>

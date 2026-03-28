@@ -1,0 +1,30 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-4">
+  <h2>Create Travel Plan</h2>
+
+  <form action="/plans" method="POST" class="mt-3">
+
+    <div class="mb-3">
+      <label class="form-label">Title</label>
+      <input type="text" name="plan[title]" class="form-control" placeholder="Enter Title" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Description</label>
+      <textarea name="plan[description]" placeholder="Enter Description" class="form-control" rows="3"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Places (comma separated)</label>
+      <input type="text" name="plan[places]" placeholder="Enter Places" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Budget (₹)</label>
+      <input type="number" name="plan[budget]" placeholder="Enter Budget" class="form-control">
+    </div>
+
+    <button class="btn btn-dark add-btn mt-3">Create Plan</button>
+  </form>
+</div>

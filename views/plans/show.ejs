@@ -1,0 +1,20 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-4">
+
+  <h2><%= plan.title %></h2>
+
+  <p><%= plan.description %></p>
+
+  <h5>Places:</h5>
+  <ul>
+    <% plan.places.forEach(place => { %>
+      <li><%= place %></li>
+    <% }) %>
+  </ul>
+
+  <p><strong>Budget:</strong> ₹<%= plan.budget %></p>
+
+  <a href="/plans" class="btn btn-dark edit-btn mt-3">Back</a>
+
+</div>

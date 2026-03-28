@@ -1,0 +1,38 @@
+<% layout("/layouts/boilerplate") %>
+
+  <div class="container mt-4">
+
+    <h2>Travel Plans</h2>
+
+    <div class="create-plan-wrapper">
+      <a href="/plans/new" class="btn btn-dark add-btn mt-3">
+        Create Plan
+      </a>
+    </div>
+
+    <div class="row mt-4">
+      <% plans.forEach(plan=> { %>
+        <div class="col-md-4 mb-3">
+          <div class="card p-3">
+            <a href="/plans/<%= plan._id %>" class="plan-link">
+              <div class="card p-3 plan-card">
+                <h5>
+                  <%= plan.title %>
+                </h5>
+                <p>
+                  <%= plan.description %>
+                </p>
+
+                <p class="places">
+                  <%= plan.places.join(", ") %>
+                </p>
+
+    <small>Budget: ₹<%= plan.budget %></small>
+  </div>
+            </a>          
+        </div>
+      </div>
+    <% }) %>
+  </div>
+
+</div>

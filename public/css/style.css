@@ -1,0 +1,349 @@
+body {
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1;
+}
+
+.navbar {
+    height: 5rem;
+    background-color: white;
+}
+
+.fa-compass {
+    color: #fe424d;
+    font-size: 2rem;
+}
+
+.nav-link {
+    color: #222222 !important;
+}
+
+.f-info-links a {
+    text-decoration: none;
+    color: #222222;
+}
+
+.f-info-links a:hover {
+    text-decoration: underline;
+}
+
+.f-info-links,
+.f-info-socials,
+.f-info-brand {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.f-info-socials i {
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+
+.f-info {
+    text-align: center;
+    height: 8rem;
+    background-color: #ebebeb;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+}
+
+.listing-card {
+    border: none !important;
+    margin-bottom: 2rem;
+}
+
+.card-img-top {
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+.card-body {
+    padding: 0 !important;
+}
+
+.card-text p {
+    font-weight: 400 !important;
+}
+
+.listing-link {
+    text-decoration: none;
+}
+
+.card-img-overlay {
+    opacity: 0;
+}
+
+.card-img-overlay:hover {
+    opacity: 0.2;
+    background-color: white;
+}
+
+.add-btn {
+    background-color: #fe424d !important;
+    border: none !important;
+}
+
+.edit-btn {
+    background-color: #fe424d !important;
+    border: none !important;
+}
+
+.show-img {
+    height: 30vh;
+}
+
+.btns {
+    display: flex;
+}
+
+.show-card {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#map {
+    height: 400px;
+    width: 100vh;
+}
+
+.marker {
+    width: 100px;
+    height: 100px;
+    background-color: rgba(255, 105, 180, 0.25);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.marker::before {
+    content: "";
+    width: 40px;
+    height: 40px;
+    background-image: url(https://cdn-icons-png.flaticon.com/512/25/25694.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    filter: invert(34%) sepia(98%) saturate(750%) hue-rotate(300deg);
+}
+
+.create-plan-wrapper {
+    margin-top: 15px;
+}
+
+.tabs-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 25px 0 10px 0;
+}
+
+.tabs-wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    width: 50%;
+    min-width: 300px;
+
+    background: #f7f7f7;
+    padding: 6px;
+    border-radius: 40px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.tab-item {
+    flex: 1;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 0;
+    border-radius: 40px;
+
+    text-decoration: none;
+    color: #555;
+
+    transition: all 0.25s ease;
+}
+
+.tab-item i {
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+.tab-item:hover {
+    background: #ffffff;
+    color: #ff385c;
+    transform: translateY(-2px);
+}
+
+.tab-item.active {
+    background: #ffffff;
+    color: #ff385c;
+    font-weight: 600;
+}
+
+.plan-card {
+    border-radius: 12px;
+    padding: 18px;
+    background: #fff;
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+
+.plan-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    border-color: #ff385c;
+}
+
+.service-card {
+    border-radius: 14px;
+    overflow: hidden;
+    padding: 10px;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+
+.service-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.service-card .card-body {
+    padding: 12px 5px 5px;
+}
+
+.service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+.service-card p {
+    color: #666;
+    font-size: 14px
+}
+
+.places {
+    font-size: 14px;
+    color: #555;
+    margin: 6px 0;
+}
+
+.plan-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.auth-switch {
+    margin-top: 15px;
+    font-size: 14px;
+    text-align: center;
+    color: #555;
+}
+
+.auth-switch a {
+    color: #ff385c;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-switch a:hover {
+    text-decoration: underline;
+}
+
+.custom-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.custom-modal.show{
+    pointer-events: all;
+}
+
+.modal-content-box {
+    background: #fff;
+    padding: 25px;
+    border-radius: 16px;
+    width: 400px;
+    max-width: 90%;
+    z-index: 10000;
+    text-align: center;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.modal-cards {
+    margin-top: 15px;
+}
+
+.mini-card {
+    border-radius: 12px;
+    padding: 18px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    margin-bottom: 12px;
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+
+.mini-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    border-color:1px solid;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+}
+
+.close-btn:hover {
+  color: #ff385c;
+}
+
+.modal-content-box{
+    position: relative;
+}
