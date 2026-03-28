@@ -23,7 +23,7 @@ const userRouter = require("./routes/user.js");
 const planRoutes = require("./routes/plan");
 const serviceRoutes = require("./routes/services");
 const dbUrl = process.env.ATLASDB_URL;
-
+const port = process.env.PORT || 3000;
 
 main()
     .then(() => {
@@ -113,8 +113,8 @@ app.use((err, req, res, next) => {
 });
 
 
-app.listen(3000, () => {
-    console.log("server is listening to port 3000");
+app.listen(port, () => {
+    console.log(`Server is listening on port ${port}`);
 })
 
 app.use((err, req, res, next) => {
