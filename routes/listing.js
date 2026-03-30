@@ -39,12 +39,6 @@ router.post("/:id/book", isLoggedIn, async (req, res) => {
   try {
     const { id } = req.params;
     const { checkIn, checkOut } = req.body;
-
-    console.log("Booking:", checkIn, checkOut);
-
-    req.flash("success", "Booking confirmed!");
-    res.redirect(`/listings/${id}`);
-
   } catch (err) {
     console.log(err);
     req.flash("error", "Something went wrong");

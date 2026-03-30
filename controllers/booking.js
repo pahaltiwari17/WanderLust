@@ -8,25 +8,45 @@ module.exports.renderForm = async (req, res) => {
 };
 
 module.exports.createBooking = async (req, res) => {
-  const { id } = req.params;
-  const { checkIn, checkOut } = req.body;
+  try {
+    console.log("BODY:", req.body);
 
-  const listing = await Listing.findById(id);
+    const { id } = req.params;
+    const checkIn = req.body.checkIn;
+    const checkOut = req.body.checkOut;
 
-  const days = (new Date(checkOut) - new Date(checkIn)) / (1000 * 60 * 60 * 24);
+    console.log("CheckIn:", checkIn, "CheckOut:", checkOut);
 
-  const totalPrice = days * listing.price;
+    const listing = await Listing.findById(id);
 
-  const booking = new Booking({
-    listing: id,
-    user: req.user._id,
-    checkIn,
-    checkOut,
-    totalPrice
-  });
+    if (!listing) {
+      console.log("Listing not found");
+      return res.redirect("/listings");
+    }
 
-  await booking.save();
+    const days =
+      (new Date(checkOut) - new Date(checkIn)) /
+      (1000 * 60 * 60 * 24);
 
-  req.flash("success", "Booking Confirmed!");
-  res.redirect(`/listings/${id}`);
+    const totalPrice = days * listing.price;
+
+    const booking = new Booking({
+      listing: id,
+      user: req.user._id,
+      checkIn,
+      checkOut,
+      totalPrice,
+    });
+
+    await booking.save();
+
+    console.log("Saved booking ID:", booking._id);
+
+    req.flash("success", "Booking Confirmed!");
+    res.redirect("/listings/" + id);
+
+  } catch (err) {
+    console.log("ERROR:", err);
+    res.send("Error occurred");
+  }
 };

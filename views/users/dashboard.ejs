@@ -1,0 +1,62 @@
+<% layout("/layouts/boilerplate") %>
+
+  <div class="container mt-4">
+    <h2 class="mb-3">Welcome, <%= currUser.username %>
+    </h2>
+
+    <h4 class="mb-4">My Listings</h4>
+
+    <% if(listings.length===0) { %>
+      <p>No listings found.</p>
+      <% } %>
+
+        <div class="row">
+          <% listings.forEach(listing=> { %>
+            <div class="col-md-4 mb-4">
+
+              <a href="/listings/<%= listing._id %>" class="custom-link">
+
+                <div class="custom-card">
+
+                  <img src="<%= listing.image.url %>" class="custom-img">
+
+                  <p class="mt-2">
+                    <b>
+                      <%= listing.title %>
+                    </b><br>
+                    ₹<%= listing.price %> / night
+                  </p>
+
+                </div>
+
+              </a>
+
+            </div>
+            <% }) %>
+        </div>
+        <hr class="my-5">
+
+        <h4 class="mb-4">My Bookings</h4>
+
+        <% if(bookings.length===0) { %>
+          <p>No bookings yet.</p>
+          <% } else { %>
+            <div class="row">
+              <% bookings.forEach(booking=> { %>
+                <div class="col-md-4 mb-4">
+                  <div class="card-body">
+                    <h5>
+                      <%= booking.listing.title%>
+                    </h5>
+
+                    <p>
+                      From: <%= booking.checkIn %><br>
+                        To: <%= booking.checkOut %>
+                    </p>
+                  </div>
+
+                </div>
+                <% }) %>
+            </div>
+            <% } %>
+  </div>

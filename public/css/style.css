@@ -347,3 +347,25 @@ body {
 .modal-content-box{
     position: relative;
 }
+
+.custom-link {
+    text-decoration: none;
+    color: black;
+}
+
+.custom-card {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.custom-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.custom-card:hover .custom-img {
+    opacity: 0.8;
+    cursor: pointer;
+}
