@@ -40,7 +40,7 @@ if (checkOutDate <= checkInDate) {
 
     const booking = new Booking({
       listing: id,
-      user: req.user._id,
+      user:req.user ? req.user._id:null,//req.user._id
       checkIn,
       checkOut,
       totalPrice,
