@@ -22,7 +22,7 @@ const checkOutDate = new Date(checkOut);
 
 if (checkOutDate <= checkInDate) {
     req.flash("error", "Check out date is invalid!");
-    return res.redirect(`/listings/${id}/book`);
+    return res.redirect(`/listings/${id}`);
 }
 
     const listing = await Listing.findById(id);
