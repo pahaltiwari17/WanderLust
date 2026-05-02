@@ -17,6 +17,20 @@ module.exports.createBooking = async (req, res) => {
 
     console.log("CheckIn:", checkIn, "CheckOut:", checkOut);
 
+    const checkInDate = new Date(checkIn);
+const checkOutDate = new Date(checkOut);
+
+if (checkOutDate <= checkInDate) {
+    req.flash("error", "Check-out date must be after check-in date");
+    return res.redirect(`/listings/${id}/book`);
+}const checkInDate = new Date(checkIn);
+const checkOutDate = new Date(checkOut);
+
+if (checkOutDate <= checkInDate) {
+    req.flash("error", "Check-out date must be after check-in date");
+    return res.redirect(`/listings/${id}/book`);
+}
+
     const listing = await Listing.findById(id);
 
     if (!listing) {
