@@ -17,10 +17,8 @@ module.exports.createBooking = async (req, res) => {
 
     console.log("CheckIn:", checkIn, "CheckOut:", checkOut);
 
-    const checkInDate = new Date(checkIn);
-const checkOutDate = new Date(checkOut);
 
-if (checkOutDate <= checkInDate) {
+if (checkOut <= checkIn) {
     req.flash("error", "Check out date is invalid!");
     return res.redirect(`/listings/${id}`);
 }
@@ -40,7 +38,7 @@ if (checkOutDate <= checkInDate) {
 
     const booking = new Booking({
       listing: id,
-      user:req.user ? req.user._id:null,//req.user._id
+      user:req.user._id,
       checkIn,
       checkOut,
       totalPrice,
